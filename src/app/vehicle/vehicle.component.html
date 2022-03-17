@@ -1,0 +1,60 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#addVehicleModal">
+  hozzáadás
+</button>
+
+<table class="table">
+  <tr>
+      <th>ID</th>
+      <th>Rendszám</th>
+      <th *ngIf ="showBrand">Márka</th>
+      <th>Ár</th>
+  </tr>
+  <tr *ngFor ="let vehicle of vehicles">
+      <td>{{vehicle.id}}</td>
+      <td>{{vehicle.plate}}</td>
+      <td *ngIf ="showBrand">{{vehicle.brand}}</td>
+      <td>{{vehicle.price}}</td>
+  </tr>
+
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addVehicleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">új jármű hozzáadás</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="plate" class="form-label">id</label>
+          <input type="text" class="form-control" id="id" placeholder="1" [formControl]= "id">
+        </div>
+
+        <div class="mb-3">
+          <label for="plate" class="form-label">Rendszám</label>
+          <input type="text" class="form-control" id="plate" placeholder="ABC-123" [formControl]= "plate">
+        </div>
+
+        <div class="mb-3">
+          <label for="plate" class="form-label">Márka</label>
+          <input type="text" class="form-control" id="brand" placeholder="Nissan"[formControl]= "brand">
+        </div>
+
+        <div class="mb-3">
+          <label for="plate" class="form-label">Ár</label>
+          <input type="text" class="form-control" id="price" placeholder="500000" [formControl]= "price">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+        data-bs-dismiss="modal">bezár</button>
+        <button type="button" class="btn btn-primary"
+        (click) ="on_save_button()" data-bs-dismiss="modal">Mentés</button>
+      </div>
+    </div>
+  </div>
+</div>
